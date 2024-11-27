@@ -1,6 +1,8 @@
 import React from 'react';
 import './footer.css';
 
+import { AppRoute } from "../../const";
+
 import { NavLink } from "react-router";
 
 import { Button } from '@consta/uikit/Button';
@@ -12,10 +14,10 @@ const Footer = () => {
         <Layout className="footer">
             <Layout className="footer__nav">
                 <Layout className="footer__nav-buttons">
-                <NavLink to="/">
+                <NavLink to={AppRoute.main}>
                     <Button size="l" label="Контакты" view="clear" />
                 </NavLink>
-                <NavLink to="/service">
+                <NavLink to={AppRoute.service}>
                     <Button size="l" label="О нас" view="ghost" form="brickRound" />
                 </NavLink>
                 </Layout>

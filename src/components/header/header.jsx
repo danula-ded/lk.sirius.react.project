@@ -1,6 +1,8 @@
 import React from "react";
 import "./header.css";
 
+import { AppRoute } from "../../const";
+
 import { NavLink } from "react-router";
 
 import { Button } from '@consta/uikit/Button';
@@ -17,10 +19,10 @@ const Header = () => {
             </NavLink>
             <Layout className="header__nav">
                 <Layout className="header__nav-buttons">
-                    <NavLink to="/">
+                    <NavLink to={AppRoute.main}>
                         <Button size='l' label="Главная" view="ghost" form="roundBrick" />
                     </NavLink>
-                    <NavLink to="/service">
+                    <NavLink to={AppRoute.service}>
                         <Button size='l' label="Услуги" view="clear" />
                     </NavLink>
                 </Layout>

@@ -4,6 +4,7 @@ import { Theme, presetGpnDefault } from '@consta/uikit/Theme';
 import { BrowserRouter, Routes, Route } from 'react-router';
 import { Responses404 } from '@consta/uikit/Responses404';
 
+import { AppRoute } from '../../const';
 
 import MainPage from '../../pages/main-page/MainPage';
 import ServicePage from '../../pages/service-page/ServicePage';
@@ -18,10 +19,10 @@ const App = function () {
 
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<MainLayout />}>
+          <Route path={AppRoute.main} element={<MainLayout />}>
             <Route index element={<MainPage />} />
-            <Route path="/service" element={<ServicePage />} /> 
-            <Route path="/service/:id" element={<ServiceDetailsPage />} />
+            <Route path={AppRoute.service} element={<ServicePage />} /> 
+            <Route path={AppRoute.serviceDetails} element={<ServiceDetailsPage />} />
           </Route>
           <Route path="*" element={<Responses404 />} />
         </Routes>
