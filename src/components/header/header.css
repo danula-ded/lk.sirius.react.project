@@ -10,8 +10,6 @@
     border-top: 1px solid #ddd;
 }
 
-
-
 /* Кнопки навигации */
 .footer__nav-buttons {
     display: flex;
@@ -42,6 +40,7 @@
     color: black;
     text-align: center;
     word-wrap: break-word;
+    text-decoration: none;
 }
 
 .header__nav {
@@ -63,9 +62,6 @@
 }
 
 .header__registration {
-    width: 180px;
-    height: 54px;
-    padding: 10px;
     border-radius: 20px;
     overflow: hidden;
     border: 1px solid black;
