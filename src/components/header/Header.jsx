@@ -36,7 +36,9 @@ const Header = () => {
                     </NavLink>
                 </Layout>
                 <Layout className="header__registration">
-                    <Button size='l' label="Регистрация" view="clear" form="round" />
+                    <NavLink to={AppRoute.auth} style={getStyleForNavLink}>
+                        <Button size='l' label="Регистрация" view="clear" form="round" />
+                    </NavLink>
                 </Layout>
             </Layout>
         </Layout>
