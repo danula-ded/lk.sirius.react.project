@@ -2,76 +2,77 @@ import React from "react";
 import { Card } from "@consta/uikit/Card";
 import { Text } from "@consta/uikit/Text";
 import "./CardNews.css"; // Для стилей (по желанию)
+import { fakeNews } from "../../__mocks__/fakeDate";
 
 const CardNews = () => {
-    const news = [
-        {
-            id: 1,
-            title: 'Искусственный интеллект на службе медицины',
-            description: 'Как AI помогает диагностировать заболевания и улучшать здоровье.',
-            date: '26 ноября 2024',
-            image: 'https://mshp.rkomi.ru/uploads/images/485264jpg_1601466489.jpeg',
-        },
-        {
-            id: 2,
-            title: 'Преимущества возобновляемой энергии',
-            description: 'Почему солнечная и ветровая энергия становятся приоритетом.',
-            date: '25 ноября 2024',
-            image: 'https://mshp.rkomi.ru/uploads/images/485264jpg_1601466489.jpeg',
-        },
-        {
-            id: 3,
-            title: 'Будущее квантовых компьютеров',
-            description: 'Квантовые вычисления и их влияние на технологии.',
-            date: '24 ноября 2024',
-            image: 'https://mshp.rkomi.ru/uploads/images/485264jpg_1601466489.jpeg',
-        }, {
-            id: 4,
-            title: 'Искусственный интеллект на службе медицины',
-            description: 'Как AI помогает диагностировать заболевания и улучшать здоровье.',
-            date: '26 ноября 2024',
-            image: 'https://mshp.rkomi.ru/uploads/images/485264jpg_1601466489.jpeg',
-        },
-        {
-            id: 5,
-            title: 'Преимущества возобновляемой энергии',
-            description: 'Почему солнечная и ветровая энергия становятся приоритетом.',
-            date: '25 ноября 2024',
-            image: 'https://mshp.rkomi.ru/uploads/images/485264jpg_1601466489.jpeg',
-        },
-        {
-            id: 6,
-            title: 'Будущее квантовых компьютеров',
-            description: 'Квантовые вычисления и их влияние на технологии.',
-            date: '24 ноября 2024',
-            image: 'https://mshp.rkomi.ru/uploads/images/485264jpg_1601466489.jpeg',
-        },
-        {
-            id: 7,
-            title: 'Искусственный интеллект на службе медицины',
-            description: 'Как AI помогает диагностировать заболевания и улучшать здоровье.',
-            date: '26 ноября 2024',
-            image: 'https://mshp.rkomi.ru/uploads/images/485264jpg_1601466489.jpeg',
-        },
-        {
-            id: 8,
-            title: 'Преимущества возобновляемой энергии',
-            description: 'Почему солнечная и ветровая энергия становятся приоритетом.',
-            date: '25 ноября 2024',
-            image: 'https://mshp.rkomi.ru/uploads/images/485264jpg_1601466489.jpeg',
-        },
-        {
-            id: 9,
-            title: 'Будущее квантовых компьютеров',
-            description: 'Квантовые вычисления и их влияние на технологии.',
-            date: '24 ноября 2024',
-            image: 'https://mshp.rkomi.ru/uploads/images/485264jpg_1601466489.jpeg',
-        },
-    ];
+    // const news = [
+    //     {
+    //         id: 1,
+    //         title: 'Искусственный интеллект на службе медицины',
+    //         description: 'Как AI помогает диагностировать заболевания и улучшать здоровье.',
+    //         date: '26 ноября 2024',
+    //         image: 'https://mshp.rkomi.ru/uploads/images/485264jpg_1601466489.jpeg',
+    //     },
+    //     {
+    //         id: 2,
+    //         title: 'Преимущества возобновляемой энергии',
+    //         description: 'Почему солнечная и ветровая энергия становятся приоритетом.',
+    //         date: '25 ноября 2024',
+    //         image: 'https://mshp.rkomi.ru/uploads/images/485264jpg_1601466489.jpeg',
+    //     },
+    //     {
+    //         id: 3,
+    //         title: 'Будущее квантовых компьютеров',
+    //         description: 'Квантовые вычисления и их влияние на технологии.',
+    //         date: '24 ноября 2024',
+    //         image: 'https://mshp.rkomi.ru/uploads/images/485264jpg_1601466489.jpeg',
+    //     }, {
+    //         id: 4,
+    //         title: 'Искусственный интеллект на службе медицины',
+    //         description: 'Как AI помогает диагностировать заболевания и улучшать здоровье.',
+    //         date: '26 ноября 2024',
+    //         image: 'https://mshp.rkomi.ru/uploads/images/485264jpg_1601466489.jpeg',
+    //     },
+    //     {
+    //         id: 5,
+    //         title: 'Преимущества возобновляемой энергии',
+    //         description: 'Почему солнечная и ветровая энергия становятся приоритетом.',
+    //         date: '25 ноября 2024',
+    //         image: 'https://mshp.rkomi.ru/uploads/images/485264jpg_1601466489.jpeg',
+    //     },
+    //     {
+    //         id: 6,
+    //         title: 'Будущее квантовых компьютеров',
+    //         description: 'Квантовые вычисления и их влияние на технологии.',
+    //         date: '24 ноября 2024',
+    //         image: 'https://mshp.rkomi.ru/uploads/images/485264jpg_1601466489.jpeg',
+    //     },
+    //     {
+    //         id: 7,
+    //         title: 'Искусственный интеллект на службе медицины',
+    //         description: 'Как AI помогает диагностировать заболевания и улучшать здоровье.',
+    //         date: '26 ноября 2024',
+    //         image: 'https://mshp.rkomi.ru/uploads/images/485264jpg_1601466489.jpeg',
+    //     },
+    //     {
+    //         id: 8,
+    //         title: 'Преимущества возобновляемой энергии',
+    //         description: 'Почему солнечная и ветровая энергия становятся приоритетом.',
+    //         date: '25 ноября 2024',
+    //         image: 'https://mshp.rkomi.ru/uploads/images/485264jpg_1601466489.jpeg',
+    //     },
+    //     {
+    //         id: 9,
+    //         title: 'Будущее квантовых компьютеров',
+    //         description: 'Квантовые вычисления и их влияние на технологии.',
+    //         date: '24 ноября 2024',
+    //         image: 'https://mshp.rkomi.ru/uploads/images/485264jpg_1601466489.jpeg',
+    //     },
+    // ];
 
     return (
         <div className="news-list">
-            {news.map((item) => (
+            {fakeNews.map((item) => (
                 <Card
                     key={item.id}
                     verticalSpace="xl"
