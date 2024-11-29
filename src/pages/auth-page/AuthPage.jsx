@@ -2,16 +2,14 @@ import React from "react";
 import "./AuthPage.css";
 import { Button } from "@consta/uikit/Button";
 import { Informer } from '@consta/uikit/Informer';
-// import IconThumbUp from '@consta/uikit/IconThumbUp';
-// import IconThumbDown from '@consta/uikit/IconThumbDown';
 
 const AuthPage = () => {
-
     const [formData, setFormData] = React.useState({
         username: '',
         password: ''
-    })
+    });
     const [message, setMessage] = React.useState(null);
+
     const fieldChangeHandle = (evt) => {
         const { name, value } = evt.target;
         setFormData({
@@ -56,8 +54,6 @@ const AuthPage = () => {
                     )}
                     <Button size='m' label="Вход" form="round" onClick={formSubmitHandle} />
                 </form>
-
-
             </div>
         </>
     );
