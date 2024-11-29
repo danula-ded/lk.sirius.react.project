@@ -5,8 +5,8 @@ function generateFakeNews(count) {
     for (let i = 1; i <= count; i++) {
         news.push({
             id: i,
-            title: faker.lorem.sentence(5),
-            description: faker.lorem.sentences(2),
+            title: faker.lorem.sentence(),
+            description: faker.lorem.paragraph(),
             date: faker.date.recent(30).toLocaleDateString('ru-RU'),
             image: faker.image.avatar(),
         });
@@ -19,7 +19,7 @@ function generateFakeServices(count) {
         services.push({
             id: i,
             title: faker.company.catchPhrase(),
-            description: faker.lorem.sentences(2),
+            description: faker.lorem.paragraph(),
             image: faker.image.avatar(),
         });
     }
