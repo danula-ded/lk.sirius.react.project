@@ -31,3 +31,7 @@
         transition: box-shadow .3s linear;
     }
 }
+
+.feedback-form-informer {
+    margin-bottom: 10px;
+}
