@@ -1,21 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { ApiPath, AppRoute } from "../../const";
+import { AppRoute } from "../../const";
 import { Card } from "@consta/uikit/Card";
 import { Text } from "@consta/uikit/Text";
 import { Loader } from "@consta/uikit/Loader";
 import { NavLink } from "react-router-dom";
 import "./CardServices.css";
 import { fakeServices } from "../../__mocks__/fakeDate";
+import { fetchServices } from "../../store/api-actions";
+
 
 const CardServices = () => {
     const [services, setServices] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`${ApiPath.services}`, {
-            method: 'GET',
-        })
-            .then((response) => response.json())
+        fetchServices()()
             .then((data) => {
                 setServices(data);
                 setIsLoading(false);

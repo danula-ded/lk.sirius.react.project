@@ -9,10 +9,11 @@
 .news-item {
     max-width: 1200px;
     width: 100%;
-    margin: 10px auto;
+    margin: 15px auto;
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
+    border-radius: 15px;
 }
 
 .news-image {

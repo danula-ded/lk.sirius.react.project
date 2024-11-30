@@ -3,15 +3,14 @@ import { Card } from "@consta/uikit/Card";
 import { Text } from "@consta/uikit/Text";
 import { Loader } from "@consta/uikit/Loader";
 import "./CardNews.css";
-import { ApiPath } from "../../const";
+import { fetchNews } from "../../store/api-actions";
 
 const CardNews = () => {
     const [news, setNews] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        fetch(ApiPath.news, { method: 'GET' })
-            .then((response) => response.json())
+        fetchNews()()
             .then((data) => {
                 setNews(data); // Сохраняем загруженные данные в состояние
                 setIsLoading(false); // Отключаем лоудер
@@ -43,7 +42,7 @@ const CardNews = () => {
                                 {item.description}
                             </Text>
                             <Text size="s" view="ghost" className="news-date">
-                                {item.createdAt}
+                                {item.createdAt.slice(0, 10)}
                             </Text>
                         </div>
                     </Card>
