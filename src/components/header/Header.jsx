@@ -21,7 +21,7 @@ const getStyleForNavLink = ({ isActive }) =>
 const Header = () => {
     return (
         <Layout className="header">
-            <NavLink to="https://github.com/danula-ded">
+            <NavLink to="https://github.com/danula-ded" style={{ textDecoration: 'none' }}>
                 <Text size="2xl" lineHeight="m" view="primary" className="header__title">
                     Ступишин Даниил
                 </Text>
