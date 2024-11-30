@@ -10,6 +10,8 @@ import MainPage from '../../pages/main-page/MainPage';
 import ServicePage from '../../pages/service-page/ServicePage';
 import ServiceDetailsPage from '../../pages/service-details-page/ServiceDetailsPage';
 import AuthPage from '../../pages/auth-page/AuthPage';
+import ProfilePage from '../../pages/profile-page/ProfilePage';
+import ScrollToTop from '../scroll-to-top/ScrollToTop';
 
 import MainLayout from '../../layouts/main-layouts/MainLayout';
 
@@ -17,14 +19,15 @@ import MainLayout from '../../layouts/main-layouts/MainLayout';
 const App = function () {
   return (
     <Theme preset={presetGpnDefault}>
-
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path={AppRoute.main} element={<MainLayout />}>
             <Route index element={<MainPage />} />
             <Route path={AppRoute.service} element={<ServicePage />} />
             <Route path={AppRoute.serviceDetails} element={<ServiceDetailsPage />} />
             <Route path={AppRoute.auth} element={<AuthPage />} />
+            <Route path={AppRoute.user} element={<ProfilePage />} />
           </Route>
           <Route path="*" element={<Responses404 />} />
         </Routes>

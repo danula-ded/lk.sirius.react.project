@@ -28,3 +28,4 @@ function generateFakeServices(count) {
 
 export const fakeNews = generateFakeNews(9);
 export const fakeServices = generateFakeServices(10);
+export const fakeImage = () => faker.image.avatar();
