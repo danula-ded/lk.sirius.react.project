@@ -62,8 +62,7 @@
 }
 
 .header__registration {
-    height: 54px;
-    width: 320px;
+    height: 48px;
     border-radius: 20px;
     overflow: hidden;
     border: 1px solid black;

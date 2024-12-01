@@ -27,9 +27,14 @@ export const getAuthTokenAction = async (username, password) => {
 }
 
 export const getUserinfoAction = async () => {
-    const response = await fetch(ApiPath.auth_me, { method: 'GET', headers: { 'Authorization': `Bearer${localStorage.getItem('token')}` } });
+    const response = await fetch(ApiPath.auth_me, {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${localStorage.getItem('refreshToken')}`,
+        },
+    });
     if (!response.ok) {
-        return null
+        throw new Error('Failed to fetch user data');
     }
     return await response.json();
-}
+};

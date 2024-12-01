@@ -15,6 +15,13 @@ import ScrollToTop from '../scroll-to-top/ScrollToTop';
 
 import MainLayout from '../../layouts/main-layouts/MainLayout';
 
+import { Navigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+
+const ProtectedRoute = ({ children }) => {
+  const { token } = useSelector((state) => state.auth);
+  return token ? children : <Navigate to="/auth" />;
+};
 
 const App = function () {
   return (
@@ -27,7 +34,11 @@ const App = function () {
             <Route path={AppRoute.service} element={<ServicePage />} />
             <Route path={AppRoute.serviceDetails} element={<ServiceDetailsPage />} />
             <Route path={AppRoute.auth} element={<AuthPage />} />
-            <Route path={AppRoute.user} element={<ProfilePage />} />
+            <Route path={AppRoute.user} element={
+              <ProtectedRoute>
+                <ProfilePage />
+              </ProtectedRoute>
+            } />
           </Route>
           <Route path="*" element={<Responses404 />} />
         </Routes>

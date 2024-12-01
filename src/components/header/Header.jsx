@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import "./Header.css";
 
 import { AppRoute } from "../../const";
@@ -10,18 +11,18 @@ import { Layout } from '@consta/uikit/Layout';
 import { Text } from '@consta/uikit/Text';
 import { User } from '@consta/uikit/User';
 
-
 const getStyleForNavLink = ({ isActive }) =>
     isActive
         ? {
             boxShadow: 'inset 0 0 10px rgba(0, 0, 0, 0.5)',
             borderRadius: '20px',
         }
-        : {}
-    ;
+        : {};
 
 const Header = () => {
-    const [isAuth, setIsAuth] = React.useState(true);
+    // Получаем токен из Redux
+    const token = useSelector((state) => state.auth.token);
+    const user = useSelector((state) => state.auth.user);
 
     return (
         <Layout className="header">
@@ -39,13 +40,18 @@ const Header = () => {
                         <Button size='l' label="Услуги" view="clear" form="round" />
                     </NavLink>
                 </Layout>
-                <Layout className="header__registration">
-                    <NavLink to={AppRoute.auth} style={getStyleForNavLink}>
-                        {isAuth ?
-                            <User size='l' avatarUrl="https://i.ibb.co/K2R8Lqb/Rectangle-1496.png" name="Роберт Пласт" />
-                            :
-                            <Button size='l' label="Вход" view="clear" form="round" />
-                        }
+                <Layout>
+                    <NavLink to={token && user ? AppRoute.profile : AppRoute.auth} style={getStyleForNavLink}>
+                        {token && user ? (
+                            <User
+                                size="l"
+                                avatarUrl={user.image || "https://via.placeholder.com/40"}
+                                name={user.firstName + " " + user.lastName || "Пользователь"}
+                                className="header__registration"
+                            />
+                        ) : (
+                            <Button size="l" label="Вход" view="clear" form="round" className="header__registration" />
+                        )}
                     </NavLink>
                 </Layout>
             </Layout>
