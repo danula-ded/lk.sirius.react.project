@@ -12,11 +12,11 @@ const CardNews = () => {
     useEffect(() => {
         fetchNews()()
             .then((data) => {
-                setNews(data); // Сохраняем загруженные данные в состояние
-                setIsLoading(false); // Отключаем лоудер
+                setNews(data);
+                setIsLoading(false);
             })
             .catch(() => {
-                setIsLoading(false); // Отключаем лоудер даже при ошибке
+                setIsLoading(false);
             });
     }, []);
 

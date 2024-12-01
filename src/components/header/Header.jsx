@@ -8,6 +8,8 @@ import { NavLink } from "react-router";
 import { Button } from '@consta/uikit/Button';
 import { Layout } from '@consta/uikit/Layout';
 import { Text } from '@consta/uikit/Text';
+import { User } from '@consta/uikit/User';
+
 
 const getStyleForNavLink = ({ isActive }) =>
     isActive
@@ -19,6 +21,8 @@ const getStyleForNavLink = ({ isActive }) =>
     ;
 
 const Header = () => {
+    const [isAuth, setIsAuth] = React.useState(true);
+
     return (
         <Layout className="header">
             <NavLink to="https://github.com/danula-ded" style={{ textDecoration: 'none' }}>
@@ -37,7 +41,11 @@ const Header = () => {
                 </Layout>
                 <Layout className="header__registration">
                     <NavLink to={AppRoute.auth} style={getStyleForNavLink}>
-                        <Button size='l' label="Регистрация" view="clear" form="round" />
+                        {isAuth ?
+                            <User size='l' avatarUrl="https://i.ibb.co/K2R8Lqb/Rectangle-1496.png" name="Роберт Пласт" />
+                            :
+                            <Button size='l' label="Вход" view="clear" form="round" />
+                        }
                     </NavLink>
                 </Layout>
             </Layout>
