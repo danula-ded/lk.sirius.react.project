@@ -17,6 +17,7 @@ import MainLayout from '../../layouts/main-layouts/MainLayout';
 
 import { Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { Button } from '@consta/uikit/Button';
 
 const ProtectedRoute = ({ children }) => {
   const { token } = useSelector((state) => state.auth);
@@ -40,7 +41,7 @@ const App = function () {
               </ProtectedRoute>
             } />
           </Route>
-          <Route path="*" element={<Responses404 />} />
+          <Route path="*" element={<Responses404 actions={<Button label={"Вернуться назад"} onClick={() => window.history.back()} />} />} />
         </Routes>
       </BrowserRouter>
 
