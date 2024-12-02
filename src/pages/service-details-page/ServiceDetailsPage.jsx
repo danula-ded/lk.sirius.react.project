@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { fakeServices } from "../../__mocks__/fakeDate";
-import { ApiPath } from "../../const";
+import { fetchServiceDetails } from "../../store/api-actions";
 import "./ServiceDetailsPage.css";
 import { Loader } from '@consta/uikit/Loader';
 
@@ -12,15 +12,12 @@ const ServiceDetailsPage = () => {
     const [service, setService] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
-    const totalServices = fakeServices.length; // Общее количество сервисов
+    const totalServices = fakeServices.length;
 
     useEffect(() => {
         let isNeedUpdate = true;
-        setIsLoading(true); // Устанавливаем состояние загрузки
-        fetch(`${ApiPath.services}/${serviceId}`, {
-            method: 'GET',
-        })
-            .then((response) => response.json())
+        setIsLoading(true);
+        fetchServiceDetails(serviceId)()
             .then((service) => {
                 if (isNeedUpdate) {
                     setService(service);

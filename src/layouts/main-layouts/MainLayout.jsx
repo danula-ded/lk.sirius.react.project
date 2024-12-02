@@ -8,11 +8,11 @@ const MainLayout = () => {
         <div>
             <Header></Header>
             <hr />
-            <main>
+            <main style={{ minHeight: "75dvh" }}>
                 <Outlet />
             </main>
             <Footer></Footer>
-        </div>
+        </div >
     );
 };
 
