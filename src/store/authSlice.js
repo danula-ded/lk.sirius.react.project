@@ -25,6 +25,7 @@ export const fetchUser = createAsyncThunk(
     async (_, { rejectWithValue }) => {
         try {
             const userData = await getUserinfoAction();
+            localStorage.setItem('user', JSON.stringify(userData));
             return userData;
         } catch (error) {
             return rejectWithValue('Failed to fetch user info');
@@ -37,7 +38,7 @@ const authSlice = createSlice({
     initialState: {
         token: localStorage.getItem('token') || null,
         refreshToken: localStorage.getItem('refreshToken') || null,
-        user: null,
+        user: JSON.parse(localStorage.getItem('user')) || null,
         error: null,
         loading: false,
     },
@@ -48,6 +49,7 @@ const authSlice = createSlice({
             state.user = null;
             localStorage.removeItem('token');
             localStorage.removeItem('refreshToken');
+            localStorage.removeItem('user');
         },
     },
     extraReducers: (builder) => {
@@ -58,7 +60,7 @@ const authSlice = createSlice({
             })
             .addCase(login.fulfilled, (state, action) => {
                 state.loading = false;
-                state.token = action.payload.token;
+                state.token = action.payload.accessToken;
                 state.refreshToken = action.payload.refreshToken;
             })
             .addCase(login.rejected, (state, action) => {

@@ -14,10 +14,10 @@ const ProfilePage = () => {
     useEffect(() => {
         if (!token) {
             navigate('/auth');
-        } else {
+        } else if (!user) {
             dispatch(fetchUser());
         }
-    }, [dispatch, token, navigate]);
+    }, [dispatch, token, user, navigate]);
 
     if (!user) return <Loader size="m" className="loader" />;
 
@@ -27,13 +27,15 @@ const ProfilePage = () => {
             <div className='profile'>
                 <div className="profile-info">
                     <div className="profile-details">
-                        <Text lineHeight="m" view="primary" className="profile-name">{`${user.firstName} ${user.lastName}`}</Text>
-                        <Text lineHeight="m" view="primary" className="profile-email">{user.email}</Text>
-                        <Text lineHeight="m" view="primary" className="profile-email">{user.birthDate}</Text>
+                        <Text lineHeight="m" view="primary" className="profile-details_info">ФИО: {`${user.firstName} ${user.lastName} ${user.maidenName}`}</Text>
+                        <Text lineHeight="m" view="primary" className="profile-details_info">Почта: {user.email}</Text>
+                        <Text lineHeight="m" view="primary" className="profile-details_info">Возраст: {user.age}</Text>
+                        <Text lineHeight="m" view="primary" className="profile-details_info">Пол: {user.gender}</Text>
+                        <Text lineHeight="m" view="primary" className="profile-details_info">Дата рождения: {user.birthDate}</Text>
                     </div>
                 </div>
                 <div className="profile-image">
-                    <img src={user.image} alt="User" className="card-image" />
+                    <img src={user.image} alt="User" className="profile-image_photo" />
                 </div>
             </div>
         </>

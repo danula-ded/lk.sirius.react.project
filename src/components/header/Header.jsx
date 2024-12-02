@@ -1,10 +1,10 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "../../store/authSlice";
+import { NavLink } from "react-router-dom";
 import "./Header.css";
 
 import { AppRoute } from "../../const";
-
-import { NavLink } from "react-router";
 
 import { Button } from '@consta/uikit/Button';
 import { Layout } from '@consta/uikit/Layout';
@@ -20,9 +20,13 @@ const getStyleForNavLink = ({ isActive }) =>
         : {};
 
 const Header = () => {
-    // Получаем токен из Redux
+    const dispatch = useDispatch();
     const token = useSelector((state) => state.auth.token);
     const user = useSelector((state) => state.auth.user);
+
+    const handleLogout = () => {
+        dispatch(logout());
+    };
 
     return (
         <Layout className="header">
@@ -41,18 +45,31 @@ const Header = () => {
                     </NavLink>
                 </Layout>
                 <Layout>
-                    <NavLink to={token && user ? AppRoute.profile : AppRoute.auth} style={getStyleForNavLink}>
-                        {token && user ? (
-                            <User
+                    {token && user ? (
+                        <Layout className="header__registration">
+                            <NavLink to={AppRoute.user} style={getStyleForNavLink}>
+                                <User
+                                    size="l"
+                                    avatarUrl={user.image || "https://via.placeholder.com/40"}
+                                    name={`${user.firstName} ${user.lastName}`}
+                                    info={`${user.email}`}
+                                    className="header__registration"
+                                />
+                            </NavLink>
+                            <Button
                                 size="l"
-                                avatarUrl={user.image || "https://via.placeholder.com/40"}
-                                name={user.firstName + " " + user.lastName || "Пользователь"}
-                                className="header__registration"
+                                label="Выход"
+                                view="clear"
+                                form="round"
+                                className="header__logout"
+                                onClick={handleLogout}
                             />
-                        ) : (
+                        </Layout>
+                    ) : (
+                        <NavLink to={AppRoute.auth} style={getStyleForNavLink} className={"header__link"}>
                             <Button size="l" label="Вход" view="clear" form="round" className="header__registration" />
-                        )}
-                    </NavLink>
+                        </NavLink>
+                    )}
                 </Layout>
             </Layout>
         </Layout>
